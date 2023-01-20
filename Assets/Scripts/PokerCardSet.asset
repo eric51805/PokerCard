@@ -1,0 +1,285 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28ba5d6ece13cef4abb93b076d9b1a8c, type: 3}
+  m_Name: PokerCardSet
+  m_EditorClassIdentifier: 
+  pokerCards:
+  - index: 0
+    type: 0
+    number: 1
+    name: "\u9ED1\u6843 Ace"
+    sprite: {fileID: 21300000, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 1
+    type: 0
+    number: 2
+    name: "\u9ED1\u6843 2"
+    sprite: {fileID: 21300002, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 2
+    type: 0
+    number: 3
+    name: "\u9ED1\u6843 3"
+    sprite: {fileID: 21300004, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 3
+    type: 0
+    number: 4
+    name: "\u9ED1\u6843 4"
+    sprite: {fileID: 21300006, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 4
+    type: 0
+    number: 5
+    name: "\u9ED1\u6843 5"
+    sprite: {fileID: 21300008, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 5
+    type: 0
+    number: 6
+    name: "\u9ED1\u6843 6"
+    sprite: {fileID: 21300010, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 6
+    type: 0
+    number: 7
+    name: "\u9ED1\u6843 7"
+    sprite: {fileID: 21300012, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 7
+    type: 0
+    number: 8
+    name: "\u9ED1\u6843 8"
+    sprite: {fileID: 21300014, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 8
+    type: 0
+    number: 9
+    name: "\u9ED1\u6843 9"
+    sprite: {fileID: 21300016, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 9
+    type: 0
+    number: 10
+    name: "\u9ED1\u6843 10"
+    sprite: {fileID: 21300018, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 10
+    type: 0
+    number: 11
+    name: "\u9ED1\u6843 J"
+    sprite: {fileID: 21300020, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 11
+    type: 0
+    number: 12
+    name: "\u9ED1\u6843 Q"
+    sprite: {fileID: 21300022, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 12
+    type: 0
+    number: 13
+    name: "\u9ED1\u6843 K"
+    sprite: {fileID: 21300024, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 13
+    type: 1
+    number: 1
+    name: "\u611B\u5FC3 Ace"
+    sprite: {fileID: 21300052, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 14
+    type: 1
+    number: 2
+    name: "\u611B\u5FC3 2"
+    sprite: {fileID: 21300054, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 15
+    type: 1
+    number: 3
+    name: "\u611B\u5FC3 3"
+    sprite: {fileID: 21300056, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 16
+    type: 1
+    number: 4
+    name: "\u611B\u5FC3 4"
+    sprite: {fileID: 21300058, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 17
+    type: 1
+    number: 5
+    name: "\u611B\u5FC3 5"
+    sprite: {fileID: 21300060, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 18
+    type: 1
+    number: 6
+    name: "\u611B\u5FC3 6"
+    sprite: {fileID: 21300062, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 19
+    type: 1
+    number: 7
+    name: "\u611B\u5FC3 7"
+    sprite: {fileID: 21300064, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 20
+    type: 1
+    number: 8
+    name: "\u611B\u5FC3 8"
+    sprite: {fileID: 21300066, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 21
+    type: 1
+    number: 9
+    name: "\u611B\u5FC3 9"
+    sprite: {fileID: 21300068, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 22
+    type: 1
+    number: 10
+    name: "\u611B\u5FC3 10"
+    sprite: {fileID: 21300070, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 23
+    type: 1
+    number: 11
+    name: "\u611B\u5FC3 J"
+    sprite: {fileID: 21300072, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 24
+    type: 1
+    number: 12
+    name: "\u611B\u5FC3 Q"
+    sprite: {fileID: 21300074, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 25
+    type: 1
+    number: 13
+    name: "\u611B\u5FC3 K"
+    sprite: {fileID: 21300076, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 26
+    type: 2
+    number: 1
+    name: "\u65B9\u584A Ace"
+    sprite: {fileID: 21300026, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 27
+    type: 2
+    number: 2
+    name: "\u65B9\u584A 2"
+    sprite: {fileID: 21300028, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 28
+    type: 2
+    number: 3
+    name: "\u65B9\u584A 3"
+    sprite: {fileID: 21300030, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 29
+    type: 2
+    number: 4
+    name: "\u65B9\u584A 4"
+    sprite: {fileID: 21300032, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 30
+    type: 2
+    number: 5
+    name: "\u65B9\u584A 5"
+    sprite: {fileID: 21300034, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 31
+    type: 2
+    number: 6
+    name: "\u65B9\u584A 6"
+    sprite: {fileID: 21300036, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 32
+    type: 2
+    number: 7
+    name: "\u65B9\u584A 7"
+    sprite: {fileID: 21300038, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 33
+    type: 2
+    number: 8
+    name: "\u65B9\u584A 8"
+    sprite: {fileID: 21300040, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 34
+    type: 2
+    number: 9
+    name: "\u65B9\u584A 9"
+    sprite: {fileID: 21300042, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 35
+    type: 2
+    number: 10
+    name: "\u65B9\u584A 10"
+    sprite: {fileID: 21300044, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 36
+    type: 2
+    number: 11
+    name: "\u65B9\u584A J"
+    sprite: {fileID: 21300046, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 37
+    type: 2
+    number: 12
+    name: "\u65B9\u584A Q"
+    sprite: {fileID: 21300048, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 38
+    type: 2
+    number: 13
+    name: "\u65B9\u584A K"
+    sprite: {fileID: 21300050, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 39
+    type: 3
+    number: 1
+    name: "\u6885\u82B1 Ace"
+    sprite: {fileID: 21300078, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 40
+    type: 3
+    number: 2
+    name: "\u6885\u82B1 2"
+    sprite: {fileID: 21300080, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 41
+    type: 3
+    number: 3
+    name: "\u6885\u82B1 3"
+    sprite: {fileID: 21300082, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 42
+    type: 3
+    number: 4
+    name: "\u6885\u82B1 4"
+    sprite: {fileID: 21300084, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 43
+    type: 3
+    number: 5
+    name: "\u6885\u82B1 5"
+    sprite: {fileID: 21300086, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 44
+    type: 3
+    number: 6
+    name: "\u6885\u82B1 6"
+    sprite: {fileID: 21300088, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 45
+    type: 3
+    number: 7
+    name: "\u6885\u82B1 7"
+    sprite: {fileID: 21300090, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 46
+    type: 3
+    number: 8
+    name: "\u6885\u82B1 8"
+    sprite: {fileID: 21300092, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 47
+    type: 3
+    number: 9
+    name: "\u6885\u82B1 9"
+    sprite: {fileID: 21300094, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 48
+    type: 3
+    number: 10
+    name: "\u6885\u82B1 10"
+    sprite: {fileID: 21300096, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 49
+    type: 3
+    number: 11
+    name: "\u6885\u82B1 J"
+    sprite: {fileID: 21300098, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 50
+    type: 3
+    number: 12
+    name: "\u6885\u82B1 Q"
+    sprite: {fileID: 21300100, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 51
+    type: 3
+    number: 13
+    name: "\u6885\u82B1 K"
+    sprite: {fileID: 21300102, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 52
+    type: 4
+    number: 0
+    name: "\u9B3C\u724C 1"
+    sprite: {fileID: 21300104, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
+  - index: 53
+    type: 4
+    number: 0
+    name: "\u9B3C\u724C 2"
+    sprite: {fileID: 21300106, guid: 3924dd0449c173e4aa69d07bdb73d5ed, type: 3}
