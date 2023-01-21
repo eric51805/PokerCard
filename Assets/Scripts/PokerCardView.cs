@@ -13,6 +13,12 @@ public class PokerCardView : MonoBehaviour
     [SerializeField]
     private Image back;
 
+    [SerializeField]
+    private Sprite handCard;
+
+    [SerializeField]
+    private Sprite otherhandCard;
+
     public PokerCard pokerCard;
 
     private Action<PokerCard> onCardClick;
@@ -36,14 +42,16 @@ public class PokerCardView : MonoBehaviour
         this.onCardClick = onCardClick;
     }
 
-    public void SetCardBack(bool show)
+    public void SetCardBack(bool show, bool isHandCard = true)
     {
         back.enabled = show;
+        back.sprite = isHandCard ? handCard : otherhandCard;
     }
 
     public bool SetCardBack()
     {
         back.enabled = !back.enabled;
+
         return back.enabled;
     }
 

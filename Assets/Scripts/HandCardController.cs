@@ -43,7 +43,8 @@ public class HandCardController : MonoBehaviour
 
     private int handCardCount;
     private List<PokerCardView> handCardViews = new List<PokerCardView>();
-    private List<int> handCardIndex = new List<int>();
+    private List<int> handCardIndexList = new List<int>();
+    private List<int> blackCardIndexList = new List<int>();
 
     // Start is called before the first frame update
     void Start()
@@ -97,23 +98,29 @@ public class HandCardController : MonoBehaviour
 
         if (pokerCard != null)
         {
-            if (handCardIndex.Contains(_pokerCard.index))
+            if (handCardIndexList.Contains(_pokerCard.index))
             {
                 // 回收手牌
                 PokerCardView pokerCardView = handCardViews.First(s => s.pokerCard.index == _pokerCard.index);
                 if (pokerCardView != null)
                 {
                     pokerCard.SetCardBack();
-                    handCardIndex.Remove(pokerCard.pokerCard.index);
+                    handCardIndexList.Remove(pokerCard.pokerCard.index);
+                    blackCardIndexList.Remove(pokerCard.pokerCard.index);
                     handCardViews.Remove(pokerCardView);
                     DestroyImmediate(pokerCardView.gameObject);
                     handCardCount -= 1;
                 }
             }
-            else if (handCardCount < 3)
+            else if (blackCardIndexList.Contains(_pokerCard.index))
+            {
+                pokerCard.SetCardBack();
+                blackCardIndexList.Remove(pokerCard.pokerCard.index);
+            }
+            else if (handCardCount < 2)
             {
                 // 取牌
-                pokerCard.SetCardBack();
+                pokerCard.SetCardBack(true, true);
 
                 GameObject newCard = Instantiate(pokerCardPrefab);
                 newCard.transform.SetParent(me.transform);
@@ -124,13 +131,16 @@ public class HandCardController : MonoBehaviour
                 pokerCardView.SetCardBack(false);
 
                 handCardViews.Add(pokerCardView);
-                handCardIndex.Add(pokerCard.pokerCard.index);
+                handCardIndexList.Add(pokerCard.pokerCard.index);
+                blackCardIndexList.Add(pokerCard.pokerCard.index);
 
                 handCardCount += 1;
             }
             else
             {
-                // 出過的牌
+                // 取牌
+                pokerCard.SetCardBack(true, false);
+                blackCardIndexList.Add(pokerCard.pokerCard.index);
             }
         }
 
@@ -144,15 +154,14 @@ public class HandCardController : MonoBehaviour
             var bo89Result = Bo89Rule.GetResult(pokerCardList, bo89ResultSet);
             resultLabel.text = bo89Result.result;
 
-            if (handCardCount == 2)
-                CalcRestCard(bo89Result);
+            CalcRestCard(bo89Result);
         }
     }
 
     public void CalcRestCard(Bo89Result twoCardResult)
     {
         var result = "";
-        var handCardList = handCardViews.Select(s => s.pokerCard).Take(2).ToList();
+        var handCardList = handCardViews.Select(s => s.pokerCard).ToList();
         var restResultList = new List<Bo89Result>();
 
         int count = 0;
@@ -160,7 +169,7 @@ public class HandCardController : MonoBehaviour
         {
             if (view == null) continue;
 
-            if (handCardIndex.Contains(view.pokerCard.index))
+            if (blackCardIndexList.Contains(view.pokerCard.index))
                 continue;
 
             handCardList.Add(view.pokerCard);
@@ -237,5 +246,38 @@ public class HandCardController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void Clear()
+    {
+        foreach (int pokerCardIndex in handCardIndexList)
+        {
+            var pokerCard = pokerCardViews[pokerCardIndex];
+            PokerCardView pokerCardView = handCardViews.First(s => s.pokerCard.index == pokerCardIndex);
+
+            pokerCard.SetCardBack();
+            blackCardIndexList.Remove(pokerCardView.pokerCard.index);
+            handCardViews.Remove(pokerCardView);
+            DestroyImmediate(pokerCardView.gameObject);
+            handCardCount -= 1;
+        }
+
+        foreach (int pokerCardIndex in blackCardIndexList)
+        {
+            var pokerCard = pokerCardViews[pokerCardIndex];
+            pokerCard.SetCardBack();
+        }
+
+        handCardCount = 0;
+        handCardViews = new List<PokerCardView>();
+        handCardIndexList = new List<int>();
+        blackCardIndexList = new List<int>();
+
+        possibleLabel.text = "";
+        detailLabel.text = "";
+        strategyLabel.text = "";
+        resultLabel.text = "請選牌";
+
+        content.sizeDelta = new Vector2(content.sizeDelta.x, 0);
     }
 }
