@@ -12,9 +12,6 @@ public class PokerCard
     public int number;
     public string name;
     public Sprite sprite;
-
-    public int GetNumber()
-    {
-        return number > 10 ? 10 : number;
-    }
+    [HideInInspector]
+    public double compareNumber;
 }

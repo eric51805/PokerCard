@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static Bo89Rule;
 
 public class HandCardController : MonoBehaviour
 {
@@ -24,6 +26,18 @@ public class HandCardController : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI resultLabel;
+
+    [SerializeField]
+    private TextMeshProUGUI possibleLabel;
+
+    [SerializeField]
+    private TextMeshProUGUI strategyLabel;
+
+    [SerializeField]
+    private TextMeshProUGUI detailLabel;
+
+    [SerializeField]
+    private RectTransform content;
 
     private PokerCardView[] pokerCardViews;
 
@@ -75,6 +89,10 @@ public class HandCardController : MonoBehaviour
 
     public void OnCardClick(PokerCard _pokerCard)
     {
+        possibleLabel.text = "";
+        detailLabel.text = "";
+        strategyLabel.text = "";
+
         var pokerCard = pokerCardViews[_pokerCard.index];
 
         if (pokerCard != null)
@@ -125,6 +143,99 @@ public class HandCardController : MonoBehaviour
             var pokerCardList = handCardViews.Select(s => s.pokerCard).ToList();
             var bo89Result = Bo89Rule.GetResult(pokerCardList, bo89ResultSet);
             resultLabel.text = bo89Result.result;
+
+            if (handCardCount == 2)
+                CalcRestCard(bo89Result);
+        }
+    }
+
+    public void CalcRestCard(Bo89Result twoCardResult)
+    {
+        var result = "";
+        var handCardList = handCardViews.Select(s => s.pokerCard).Take(2).ToList();
+        var restResultList = new List<Bo89Result>();
+
+        int count = 0;
+        foreach (var view in pokerCardViews)
+        {
+            if (view == null) continue;
+
+            if (handCardIndex.Contains(view.pokerCard.index))
+                continue;
+
+            handCardList.Add(view.pokerCard);
+            Bo89Result bo89Result = GetResult(handCardList, bo89ResultSet);
+            bo89Result.addCard = view.pokerCard;
+            handCardList.Remove(view.pokerCard);
+
+            restResultList.Add(bo89Result);
+
+            count += 1;
+        }
+
+        SortBo89Result(restResultList);
+
+        int changeToBigger = 0;
+
+        foreach (Bo89Result bo89Result in restResultList)
+        {
+            var tempResult = "";
+            var bo89ResultInfo = bo89ResultSet.bo89ResultInfos.Where(s => s.resultType == bo89Result.resultType).First();
+            var isBiggerThanOriginal = Compare2Result(bo89Result, twoCardResult);
+            var change = "";
+
+            change = isBiggerThanOriginal ? "(變大)" : "(變小)";
+
+            if (isBiggerThanOriginal)
+                changeToBigger++;
+
+            switch (bo89Result.resultType)
+            {
+                case Bo89ResultType.None:
+                    tempResult = $"{bo89Result.addCard.name} → {bo89Result.totalPoint} 點 {change}\n";
+                    break;
+                case Bo89ResultType.ThreeOfFlush:
+                    tempResult = $"{bo89Result.addCard.name} → {bo89Result.totalPoint} 點 {bo89ResultInfo.name} {change}\n";
+                    break;
+                case Bo89ResultType.Straight:
+                case Bo89ResultType.ThreeOfAKind:
+                case Bo89ResultType.StraightFlush:
+                case Bo89ResultType.RoyalStraightFlush:
+                    tempResult = $"{bo89Result.addCard.name} → {bo89ResultInfo.name} {change}\n";
+                    break;
+            }
+
+            result += tempResult;
+        }
+
+        var percentOfChangeToBigger = Convert.ToDouble(changeToBigger) / Convert.ToDouble(restResultList.Count);
+        var percentOfChangeToSmaller = 1 - percentOfChangeToBigger;
+        var percentOfChangeToBiggerStr = (percentOfChangeToBigger * 100).ToString("N2");
+        var percentOfChangeToSmallerStr = (percentOfChangeToSmaller * 100).ToString("N2");
+
+        detailLabel.text = $"{percentOfChangeToBiggerStr} % 變大\n";
+        detailLabel.text += $"{percentOfChangeToSmallerStr} % 變小";
+
+        strategyLabel.text = (percentOfChangeToBigger * 100) > 50 ? "補" : "不補";
+
+        content.sizeDelta = new Vector2(content.sizeDelta.x, 32f * count);
+        possibleLabel.text = result;
+    }
+
+    private void SortBo89Result(List<Bo89Result> source)
+    {
+        for (int i = 0; i < source.Count; i++)
+        {
+            for (int j = 0; j < source.Count; j++)
+            {
+                if (Bo89Rule.Compare2Result(source[i], source[j]))
+                {
+                    var tempResult1 = source[i];
+                    var tempResult2 = source[j];
+                    source[i] = tempResult2;
+                    source[j] = tempResult1;
+                }
+            }
         }
     }
 }

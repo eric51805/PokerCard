@@ -14,26 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bo89ResultInfos:
   - resultType: 0
+    name: "\u7687\u5BB6\u540C\u82B1\u9806"
     odds: 7
     result: "{0}\\n{1}\\n{2}\\n\u7687\u5BB6\u540C\u82B1\u9806"
   - resultType: 1
+    name: "\u540C\u82B1\u9806"
     odds: 6
     result: "{0}\\n{1}\\n{2}\\n\u540C\u82B1\u9806"
   - resultType: 2
+    name: "\u4E09\u689D"
     odds: 5
     result: "{0}\\n\u4E09\u689D"
   - resultType: 3
+    name: "\u9806\u5B50"
     odds: 4
     result: "{0}\\n{1}\\n{2}\\n\u9806\u5B50"
   - resultType: 4
+    name: "\u4E09\u540C\u82B1"
     odds: 3
     result: "{0} \u9EDE\\n\u4E09\u540C\u82B1"
   - resultType: 5
+    name: "\u5C0D\u5B50"
     odds: 2
-    result: "{0} \u9EDE\\n\u4E00\u5C0D"
+    result: "{0} \u9EDE\\n\u5C0D\u5B50"
   - resultType: 6
+    name: "\u540C\u82B1"
     odds: 2
     result: "{0} \u9EDE\\n\u540C\u82B1"
   - resultType: 7
+    name: "\u9EDE"
     odds: 1
     result: "{0} \u9EDE"
