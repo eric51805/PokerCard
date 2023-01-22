@@ -185,6 +185,7 @@ public class HandCardController : MonoBehaviour
         SortBo89Result(restResultList);
 
         int changeToBigger = 0;
+        int changeToSpecial = 0;
 
         foreach (Bo89Result bo89Result in restResultList)
         {
@@ -193,7 +194,7 @@ public class HandCardController : MonoBehaviour
             var isBiggerThanOriginal = Compare2Result(bo89Result, twoCardResult);
             var change = "";
 
-            change = isBiggerThanOriginal ? "(變大)" : "(變小)";
+            change = isBiggerThanOriginal ? "(大)" : "(小)";
 
             if (isBiggerThanOriginal)
                 changeToBigger++;
@@ -214,6 +215,9 @@ public class HandCardController : MonoBehaviour
                     break;
             }
 
+            if (bo89Result.resultType != Bo89ResultType.None)
+                changeToSpecial++;
+
             result += tempResult;
         }
 
@@ -222,12 +226,17 @@ public class HandCardController : MonoBehaviour
         var percentOfChangeToBiggerStr = (percentOfChangeToBigger * 100).ToString("N2");
         var percentOfChangeToSmallerStr = (percentOfChangeToSmaller * 100).ToString("N2");
 
+        var percentOfChangeToSpecial = Convert.ToDouble(changeToSpecial) / Convert.ToDouble(restResultList.Count);
+        var percentOfChangeToSpecialStr = (percentOfChangeToSpecial * 100).ToString("N2");
+
         detailLabel.text = $"{percentOfChangeToBiggerStr} % 變大\n";
-        detailLabel.text += $"{percentOfChangeToSmallerStr} % 變小";
+        detailLabel.text += $"{percentOfChangeToSmallerStr} % 變小\n";
+        detailLabel.text += $"\n";
+        detailLabel.text += $"{percentOfChangeToSpecialStr} % 有牌型";
 
         strategyLabel.text = (percentOfChangeToBigger * 100) > 50 ? "補" : "不補";
 
-        content.sizeDelta = new Vector2(content.sizeDelta.x, 32f * count);
+        content.sizeDelta = new Vector2(content.sizeDelta.x, 42.6f * count);
         possibleLabel.text = result;
     }
 
